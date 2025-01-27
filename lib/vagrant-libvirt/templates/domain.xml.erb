@@ -289,9 +289,11 @@
   graphics.reject { |k,v| v.nil? }
     .map { |k,v| "#{k}='#{v}'" }
     .join(' ')
-  -%><%- if not @graphics_gl %>/><% else %>>
+    -%><%- if not @graphics_gl or not @graphics_listen_type.nil? %>/><% elsif @graphics_gl %>>
       <gl enable='yes'/>
-    </graphics><% end -%>
+      </graphics><% else %>>
+        <listen type="<%= graphics_listen_type %>"/>
+      </graphics><% end -%>
     <video>
       <model type='<%= @video_type %>' vram='<%= @video_vram %>' heads='1'<% if not @video_accel3d %>/><% else %>>
         <acceleration accel3d='yes'/>

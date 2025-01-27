@@ -128,6 +128,7 @@ module VagrantPlugins
       attr_accessor :dtb
       attr_accessor :emulator_path
       attr_accessor :graphics_type
+      attr_accessor :graphics_listen_type
       attr_accessor :graphics_autoport
       attr_accessor :graphics_port
       attr_accessor :graphics_websocket
@@ -313,6 +314,7 @@ module VagrantPlugins
         @cmd_line          = UNSET_VALUE
         @emulator_path     = UNSET_VALUE
         @graphics_type     = UNSET_VALUE
+        @graphics_listen_type = UNSET_VALUE
         @graphics_autoport = UNSET_VALUE
         @graphics_port     = UNSET_VALUE
         @graphics_websocket = UNSET_VALUE
@@ -1031,6 +1033,7 @@ module VagrantPlugins
         @initrd = nil if @initrd == UNSET_VALUE
         @dtb = nil if @dtb == UNSET_VALUE
         @graphics_type = 'vnc' if @graphics_type == UNSET_VALUE
+        @graphics_listen_type = nil if @graphics_listen_type == UNSET_VALUE
         @graphics_autoport = @graphics_type != 'spice' && @graphics_port == UNSET_VALUE ? 'yes' : nil
         if (@graphics_type != 'vnc' && @graphics_type != 'spice') ||
            @graphics_passwd == UNSET_VALUE

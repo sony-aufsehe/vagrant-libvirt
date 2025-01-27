@@ -69,6 +69,7 @@ module VagrantPlugins
           @initrd = config.initrd
           @dtb = config.dtb
           @graphics_type = config.graphics_type
+          @graphics_listen_type = config.graphics_listen_type
           @graphics_autoport = config.graphics_autoport
           @graphics_port = config.graphics_port
           @graphics_websocket = config.graphics_websocket
@@ -288,6 +289,7 @@ module VagrantPlugins
           end
 
           env[:ui].info(" -- Graphics Type:     #{@graphics_type}")
+          env[:ui].info(" -- Graphics Listen Type:       #{@graphics_listen_type}") if @graphics_listen_type
           env[:ui].info(" -- Graphics Websocket: #{@graphics_websocket}") if @graphics_websocket != -1
           if !@graphics_autoport
             env[:ui].info(" -- Graphics Port:     #{@graphics_port}")
