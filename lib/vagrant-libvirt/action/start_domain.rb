@@ -319,7 +319,7 @@ module VagrantPlugins
                 descr_changed = true
                 graphics_listen = REXML::Element.new('listen', REXML::XPath.first(xml_descr, '/domain/devices/graphics'))
               end
-              if graphis_listen.attributes['type'] != config.graphics_listen_type
+              if graphics_listen.attributes['type'] != config.graphics_listen_type
                 descr_changed = true
                 graphics_listen.attributes['type'] = config.graphics_listen_type
               end
